@@ -11,6 +11,9 @@
 		B4A1411A24683A3D00DD3B0B /* NSNumber+PDMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A1411924683A3D00DD3B0B /* NSNumber+PDMAdditions.m */; };
 		B4A1411E24684A4800DD3B0B /* PDMGPSTrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A1411D24684A4800DD3B0B /* PDMGPSTrackerService.m */; };
 		B4A14122246859C400DD3B0B /* PDMObserverScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A14121246859C300DD3B0B /* PDMObserverScheduler.m */; };
+		B4A1412524685C5B00DD3B0B /* PDMGPSTrackerData.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A1412424685C5B00DD3B0B /* PDMGPSTrackerData.m */; };
+		B4A141282468616800DD3B0B /* PDMGPSTrackerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A141272468616800DD3B0B /* PDMGPSTrackerTableViewCell.m */; };
+		B4A1412B2468663400DD3B0B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A1412A2468663400DD3B0B /* CoreLocation.framework */; };
 		B4B84B69246706BF009437E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B68246706BF009437E5 /* AppDelegate.m */; };
 		B4B84B6F246706C0009437E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B6E246706C0009437E5 /* ViewController.m */; };
 		B4B84B72246706C0009437E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B84B70246706C0009437E5 /* Main.storyboard */; };
@@ -49,6 +52,11 @@
 		B4A1411F24684A5500DD3B0B /* PDMGPSTrackerServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMGPSTrackerServiceProtocol.h; sourceTree = "<group>"; };
 		B4A14120246859C300DD3B0B /* PDMObserverScheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMObserverScheduler.h; sourceTree = "<group>"; };
 		B4A14121246859C300DD3B0B /* PDMObserverScheduler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMObserverScheduler.m; sourceTree = "<group>"; };
+		B4A1412324685C5B00DD3B0B /* PDMGPSTrackerData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMGPSTrackerData.h; sourceTree = "<group>"; };
+		B4A1412424685C5B00DD3B0B /* PDMGPSTrackerData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMGPSTrackerData.m; sourceTree = "<group>"; };
+		B4A141262468616800DD3B0B /* PDMGPSTrackerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMGPSTrackerTableViewCell.h; sourceTree = "<group>"; };
+		B4A141272468616800DD3B0B /* PDMGPSTrackerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMGPSTrackerTableViewCell.m; sourceTree = "<group>"; };
+		B4A1412A2468663400DD3B0B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B4B84B64246706BF009437E5 /* Sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B84B67246706BF009437E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B4B84B68246706BF009437E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4A1412B2468663400DD3B0B /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +118,8 @@
 				B4B84B6E246706C0009437E5 /* ViewController.m */,
 				B442C2EF2468310800141A8C /* PDMVector3TableViewCell.h */,
 				B442C2F02468310800141A8C /* PDMVector3TableViewCell.m */,
+				B4A141262468616800DD3B0B /* PDMGPSTrackerTableViewCell.h */,
+				B4A141272468616800DD3B0B /* PDMGPSTrackerTableViewCell.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -119,8 +130,18 @@
 				B4A1411C24684A4800DD3B0B /* PDMGPSTrackerService.h */,
 				B4A1411D24684A4800DD3B0B /* PDMGPSTrackerService.m */,
 				B4A1411F24684A5500DD3B0B /* PDMGPSTrackerServiceProtocol.h */,
+				B4A1412324685C5B00DD3B0B /* PDMGPSTrackerData.h */,
+				B4A1412424685C5B00DD3B0B /* PDMGPSTrackerData.m */,
 			);
 			path = GPSTracker;
+			sourceTree = "<group>";
+		};
+		B4A141292468663300DD3B0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4A1412A2468663400DD3B0B /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B4B84B5B246706BF009437E5 = {
@@ -128,6 +149,7 @@
 			children = (
 				B4B84B66246706BF009437E5 /* Sensors */,
 				B4B84B65246706BF009437E5 /* Products */,
+				B4A141292468663300DD3B0B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -336,7 +358,9 @@
 				B4B84B7A246706C1009437E5 /* main.m in Sources */,
 				B4A1411E24684A4800DD3B0B /* PDMGPSTrackerService.m in Sources */,
 				B4B84B832467E448009437E5 /* PDMServiceLocator.m in Sources */,
+				B4A1412524685C5B00DD3B0B /* PDMGPSTrackerData.m in Sources */,
 				B4B84BA92467F55E009437E5 /* PDMAccelerometerData.m in Sources */,
+				B4A141282468616800DD3B0B /* PDMGPSTrackerTableViewCell.m in Sources */,
 				B4B84BAD24680A29009437E5 /* PDMRunningCalculator.m in Sources */,
 				B4B84BA22467EDD1009437E5 /* PDMAccelerometerService.m in Sources */,
 			);

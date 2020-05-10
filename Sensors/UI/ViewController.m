@@ -7,14 +7,21 @@
 //
 
 #import "ViewController.h"
+#import "PDMGPSTrackerTableViewCell.h"
 #import "PDMVector3TableViewCell.h"
 #import "PDMServiceLocator.h"
 #import "PDMAccelerometerServiceProtocol.h"
 #import "PDMAccelerometerData.h"
 #import "PDMGPSTrackerServiceProtocol.h"
+#import "PDMGPSTrackerData.h"
 #import "PDMUtils.h"
 
 NSTimeInterval const kPDMDataUpdateInterval = 1 / 8.f;
+
+typedef NS_ENUM(NSInteger, PDMTableSection) {
+    PDMTableSectionGPS = 0,
+    PDMTableSectionAccelerometer,
+};
 
 typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
     PDMAccelerometerPropertyCurrent = 0,
@@ -28,7 +35,7 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
 };
 
 
-@interface ViewController () <UITableViewDataSource, PDMAccelerometerServiceObserver>
+@interface ViewController () <UITableViewDataSource, PDMAccelerometerServiceObserver, PDMGPSTrackerServiceObserver>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
@@ -36,6 +43,7 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
 @property (nonatomic, strong) id<PDMAccelerometerServiceProtocol> accelerometerService;
 @property (nonatomic, strong) PDMAccelerometerData *accelerometerData;
 @property (nonatomic, strong) id<PDMGPSTrackerServiceProtocol> gpsTrackerService;
+@property (nonatomic, strong) PDMGPSTrackerData *gpsTrackerData;
 
 
 @end
@@ -57,32 +65,37 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
     self.accelerometerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMAccelerometerServiceProtocol)];
     self.accelerometerData = [[PDMAccelerometerData alloc] init];
     self.gpsTrackerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMGPSTrackerServiceProtocol)];
+    self.gpsTrackerData = [[PDMGPSTrackerData alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.accelerometerService registerObserver:self timeinterval:kPDMDataUpdateInterval];
+    [self.gpsTrackerService registerObserver:self timeinterval:kPDMDataUpdateInterval];
+    [self.gpsTrackerService startUpdates];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.accelerometerService removeObserver:self];
+    [self.gpsTrackerService removeObserver:self];
+    [self.gpsTrackerService stopUpdates];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return @"Accelerometer";
-        case 1: return @"GPS";
+        case PDMTableSectionGPS: return @"GPS";
+        case PDMTableSectionAccelerometer: return @"Accelerometer";
 
         default: return nil;
     }
@@ -90,20 +103,37 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return self.properties.count;
+    switch (section) {
+        case PDMTableSectionGPS: return 1;
+        case PDMTableSectionAccelerometer: return self.properties.count;
+
+        default: return 0;
     }
-    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        PDMVector3TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Vector3Cell" forIndexPath:indexPath];
-        [self configureVector3TableViewCell:cell forIndex:indexPath.row];
-        return cell;
+    switch (indexPath.section) {
+        case PDMTableSectionGPS: {
+            PDMGPSTrackerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GPSTrackerCell" forIndexPath:indexPath];
+            [self configureGPSTrackerTableViewCell:cell];
+            return cell;
+        }
+
+        case PDMTableSectionAccelerometer: {
+            PDMVector3TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Vector3Cell" forIndexPath:indexPath];
+            [self configureVector3TableViewCell:cell forIndex:indexPath.row];
+            return cell;
+        }
+
+        default: break;
     }
     return nil;
+}
+
+- (void)configureGPSTrackerTableViewCell:(PDMGPSTrackerTableViewCell *)cell
+{
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f m", self.gpsTrackerData.distance];
 }
 
 - (void)configureVector3TableViewCell:(PDMVector3TableViewCell *)cell forIndex:(NSUInteger)index
@@ -136,6 +166,16 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
 - (void)accelerometerDidUpdateWithData:(PDMAccelerometerData *)accelerometerData
 {
     self.accelerometerData = accelerometerData;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+}
+
+#pragma mark - PDMGPSTrackerServiceObserver
+
+- (void)gpsTrackerDidUpdateWithData:(PDMGPSTrackerData *)gpsTrackerData
+{
+    self.gpsTrackerData = gpsTrackerData;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });

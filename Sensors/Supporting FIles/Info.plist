@@ -41,7 +41,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>Privacy – Location When In Use Usage Description</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Sensors needs to access your location to track the distance you&apos;ve covered for the last 3 minutes.</string>
 </dict>
 </plist>
