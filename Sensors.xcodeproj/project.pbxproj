@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B4B84B69246706BF009437E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B68246706BF009437E5 /* AppDelegate.m */; };
-		B4B84B6C246706BF009437E5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B6B246706BF009437E5 /* SceneDelegate.m */; };
 		B4B84B6F246706C0009437E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B6E246706C0009437E5 /* ViewController.m */; };
 		B4B84B72246706C0009437E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B84B70246706C0009437E5 /* Main.storyboard */; };
 		B4B84B74246706C1009437E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B84B73246706C1009437E5 /* Assets.xcassets */; };
@@ -19,6 +18,11 @@
 		B4B84B952467E8E4009437E5 /* PDMServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B822467E448009437E5 /* PDMServiceLocator.m */; };
 		B4B84B992467EA71009437E5 /* PDMTestServiceOne.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B982467EA71009437E5 /* PDMTestServiceOne.m */; };
 		B4B84B9C2467EA7C009437E5 /* PDMTestServiceTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B9B2467EA7C009437E5 /* PDMTestServiceTwo.m */; };
+		B4B84BA22467EDD1009437E5 /* PDMAccelerometerService.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84BA12467EDD1009437E5 /* PDMAccelerometerService.m */; };
+		B4B84BA42467F2B9009437E5 /* PDMAccelerometerServiceProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = B4B84BA32467EE6E009437E5 /* PDMAccelerometerServiceProtocol.h */; };
+		B4B84BA92467F55E009437E5 /* PDMAccelerometerData.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84BA82467F55E009437E5 /* PDMAccelerometerData.m */; };
+		B4B84BAD24680A29009437E5 /* PDMRunningCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84BAC24680A29009437E5 /* PDMRunningCalculator.m */; };
+		B4B84BB0246814CC009437E5 /* PDMHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84BAF246814CC009437E5 /* PDMHeap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +39,6 @@
 		B4B84B64246706BF009437E5 /* Sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B84B67246706BF009437E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B4B84B68246706BF009437E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B4B84B6A246706BF009437E5 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		B4B84B6B246706BF009437E5 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		B4B84B6D246706C0009437E5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B4B84B6E246706C0009437E5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B4B84B71246706C0009437E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +57,16 @@
 		B4B84B9B2467EA7C009437E5 /* PDMTestServiceTwo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMTestServiceTwo.m; sourceTree = "<group>"; };
 		B4B84B9D2467EA97009437E5 /* PDMTestProtocolOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMTestProtocolOne.h; sourceTree = "<group>"; };
 		B4B84B9E2467EBFA009437E5 /* PDMTestProtocolTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMTestProtocolTwo.h; sourceTree = "<group>"; };
+		B4B84BA02467EDD1009437E5 /* PDMAccelerometerService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMAccelerometerService.h; sourceTree = "<group>"; };
+		B4B84BA12467EDD1009437E5 /* PDMAccelerometerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMAccelerometerService.m; sourceTree = "<group>"; };
+		B4B84BA32467EE6E009437E5 /* PDMAccelerometerServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMAccelerometerServiceProtocol.h; sourceTree = "<group>"; };
+		B4B84BA62467F319009437E5 /* PDMUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMUtils.h; sourceTree = "<group>"; };
+		B4B84BA72467F55E009437E5 /* PDMAccelerometerData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMAccelerometerData.h; sourceTree = "<group>"; };
+		B4B84BA82467F55E009437E5 /* PDMAccelerometerData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMAccelerometerData.m; sourceTree = "<group>"; };
+		B4B84BAB24680A29009437E5 /* PDMRunningCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMRunningCalculator.h; sourceTree = "<group>"; };
+		B4B84BAC24680A29009437E5 /* PDMRunningCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMRunningCalculator.m; sourceTree = "<group>"; };
+		B4B84BAE246814CC009437E5 /* PDMHeap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMHeap.h; sourceTree = "<group>"; };
+		B4B84BAF246814CC009437E5 /* PDMHeap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMHeap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				B4B84B66246706BF009437E5 /* Sensors */,
-				B4B84B892467E890009437E5 /* SensorsTests */,
 				B4B84B65246706BF009437E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,14 +107,15 @@
 		B4B84B66246706BF009437E5 /* Sensors */ = {
 			isa = PBXGroup;
 			children = (
+				B4B84BA52467F308009437E5 /* Utils */,
+				B4B84B9F2467EDBC009437E5 /* Services */,
 				B4B84B802467E3C1009437E5 /* Supporting FIles */,
 				B4B84B67246706BF009437E5 /* AppDelegate.h */,
 				B4B84B68246706BF009437E5 /* AppDelegate.m */,
 				B4B84B6D246706C0009437E5 /* ViewController.h */,
 				B4B84B6E246706C0009437E5 /* ViewController.m */,
 				B4B84B79246706C1009437E5 /* main.m */,
-				B4B84B812467E448009437E5 /* PDMServiceLocator.h */,
-				B4B84B822467E448009437E5 /* PDMServiceLocator.m */,
+				B4B84B892467E890009437E5 /* SensorsTests */,
 			);
 			path = Sensors;
 			sourceTree = "<group>";
@@ -111,8 +123,6 @@
 		B4B84B802467E3C1009437E5 /* Supporting FIles */ = {
 			isa = PBXGroup;
 			children = (
-				B4B84B6A246706BF009437E5 /* SceneDelegate.h */,
-				B4B84B6B246706BF009437E5 /* SceneDelegate.m */,
 				B4B84B70246706C0009437E5 /* Main.storyboard */,
 				B4B84B73246706C1009437E5 /* Assets.xcassets */,
 				B4B84B75246706C1009437E5 /* LaunchScreen.storyboard */,
@@ -142,6 +152,40 @@
 				B4B84B9E2467EBFA009437E5 /* PDMTestProtocolTwo.h */,
 			);
 			path = "Sample Services";
+			sourceTree = "<group>";
+		};
+		B4B84B9F2467EDBC009437E5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B4B84BAA24680A0B009437E5 /* Accelerometer */,
+				B4B84B812467E448009437E5 /* PDMServiceLocator.h */,
+				B4B84B822467E448009437E5 /* PDMServiceLocator.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B4B84BA52467F308009437E5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B4B84BAE246814CC009437E5 /* PDMHeap.h */,
+				B4B84BAF246814CC009437E5 /* PDMHeap.m */,
+				B4B84BA62467F319009437E5 /* PDMUtils.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B4B84BAA24680A0B009437E5 /* Accelerometer */ = {
+			isa = PBXGroup;
+			children = (
+				B4B84BA02467EDD1009437E5 /* PDMAccelerometerService.h */,
+				B4B84BA12467EDD1009437E5 /* PDMAccelerometerService.m */,
+				B4B84BA32467EE6E009437E5 /* PDMAccelerometerServiceProtocol.h */,
+				B4B84BA72467F55E009437E5 /* PDMAccelerometerData.h */,
+				B4B84BA82467F55E009437E5 /* PDMAccelerometerData.m */,
+				B4B84BAB24680A29009437E5 /* PDMRunningCalculator.h */,
+				B4B84BAC24680A29009437E5 /* PDMRunningCalculator.m */,
+			);
+			path = Accelerometer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,10 +290,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4B84B6F246706C0009437E5 /* ViewController.m in Sources */,
+				B4B84BB0246814CC009437E5 /* PDMHeap.m in Sources */,
 				B4B84B69246706BF009437E5 /* AppDelegate.m in Sources */,
 				B4B84B7A246706C1009437E5 /* main.m in Sources */,
 				B4B84B832467E448009437E5 /* PDMServiceLocator.m in Sources */,
-				B4B84B6C246706BF009437E5 /* SceneDelegate.m in Sources */,
+				B4B84BA92467F55E009437E5 /* PDMAccelerometerData.m in Sources */,
+				B4B84BAD24680A29009437E5 /* PDMRunningCalculator.m in Sources */,
+				B4B84BA22467EDD1009437E5 /* PDMAccelerometerService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4B84BA42467F2B9009437E5 /* PDMAccelerometerServiceProtocol.h in Sources */,
 				B4B84B952467E8E4009437E5 /* PDMServiceLocator.m in Sources */,
 				B4B84B942467E8B9009437E5 /* PDMServiceLocatorTests.m in Sources */,
 				B4B84B9C2467EA7C009437E5 /* PDMTestServiceTwo.m in Sources */,
@@ -411,6 +459,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E5FJ56WP5;
 				INFOPLIST_FILE = "Sensors/Supporting FIles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,6 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E5FJ56WP5;
 				INFOPLIST_FILE = "Sensors/Supporting FIles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

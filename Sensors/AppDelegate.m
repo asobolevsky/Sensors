@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "PDMServiceLocator.h"
+#import "PDMAccelerometerService.h"
+#import "PDMAccelerometerServiceProtocol.h"
 
 @interface AppDelegate ()
 
@@ -14,27 +17,60 @@
 
 @implementation AppDelegate
 
+#pragma mark - Lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self registerServices];
+    [self startServices];
     return YES;
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [self startServices];
+}
 
-#pragma mark - UISceneSession lifecycle
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [self stopServices];
+}
 
-
-- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [self stopServices];
 }
 
 
-- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+#pragma mark -
+
+- (void)registerServices
+{
+    [PDMServiceLocator registerService:[[PDMAccelerometerService alloc] init]
+                           forProtocol:@protocol(PDMAccelerometerServiceProtocol)];
+}
+
+- (void)startServices
+{
+    [self startAccelerometer];
+}
+
+- (void)stopServices
+{
+    [self stopAccelerometer];
+}
+
+- (void)startAccelerometer
+{
+    id<PDMAccelerometerServiceProtocol> accelerometerService;
+    accelerometerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMAccelerometerServiceProtocol)];
+    [accelerometerService startAccelerometerUpdates];
+}
+
+- (void)stopAccelerometer
+{
+    id<PDMAccelerometerServiceProtocol> accelerometerService;
+    accelerometerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMAccelerometerServiceProtocol)];
+    [accelerometerService stopAccelerometerUpdates];
 }
 
 
