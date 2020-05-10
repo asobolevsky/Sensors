@@ -14,7 +14,22 @@
 		B4B84B74246706C1009437E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B84B73246706C1009437E5 /* Assets.xcassets */; };
 		B4B84B77246706C1009437E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B84B75246706C1009437E5 /* LaunchScreen.storyboard */; };
 		B4B84B7A246706C1009437E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B79246706C1009437E5 /* main.m */; };
+		B4B84B832467E448009437E5 /* PDMServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B822467E448009437E5 /* PDMServiceLocator.m */; };
+		B4B84B942467E8B9009437E5 /* PDMServiceLocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B932467E8B9009437E5 /* PDMServiceLocatorTests.m */; };
+		B4B84B952467E8E4009437E5 /* PDMServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B822467E448009437E5 /* PDMServiceLocator.m */; };
+		B4B84B992467EA71009437E5 /* PDMTestServiceOne.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B982467EA71009437E5 /* PDMTestServiceOne.m */; };
+		B4B84B9C2467EA7C009437E5 /* PDMTestServiceTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B84B9B2467EA7C009437E5 /* PDMTestServiceTwo.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4B84B8D2467E890009437E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4B84B5C246706BF009437E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4B84B63246706BF009437E5;
+			remoteInfo = Sensors;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B4B84B64246706BF009437E5 /* Sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,10 +44,28 @@
 		B4B84B76246706C1009437E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4B84B78246706C1009437E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4B84B79246706C1009437E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B4B84B812467E448009437E5 /* PDMServiceLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMServiceLocator.h; sourceTree = "<group>"; };
+		B4B84B822467E448009437E5 /* PDMServiceLocator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMServiceLocator.m; sourceTree = "<group>"; };
+		B4B84B882467E890009437E5 /* SensorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SensorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4B84B8C2467E890009437E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4B84B932467E8B9009437E5 /* PDMServiceLocatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMServiceLocatorTests.m; sourceTree = "<group>"; };
+		B4B84B972467EA71009437E5 /* PDMTestServiceOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMTestServiceOne.h; sourceTree = "<group>"; };
+		B4B84B982467EA71009437E5 /* PDMTestServiceOne.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMTestServiceOne.m; sourceTree = "<group>"; };
+		B4B84B9A2467EA7C009437E5 /* PDMTestServiceTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMTestServiceTwo.h; sourceTree = "<group>"; };
+		B4B84B9B2467EA7C009437E5 /* PDMTestServiceTwo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDMTestServiceTwo.m; sourceTree = "<group>"; };
+		B4B84B9D2467EA97009437E5 /* PDMTestProtocolOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMTestProtocolOne.h; sourceTree = "<group>"; };
+		B4B84B9E2467EBFA009437E5 /* PDMTestProtocolTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDMTestProtocolTwo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B4B84B61246706BF009437E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4B84B852467E890009437E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B4B84B66246706BF009437E5 /* Sensors */,
+				B4B84B892467E890009437E5 /* SensorsTests */,
 				B4B84B65246706BF009437E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				B4B84B64246706BF009437E5 /* Sensors.app */,
+				B4B84B882467E890009437E5 /* SensorsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,19 +96,52 @@
 		B4B84B66246706BF009437E5 /* Sensors */ = {
 			isa = PBXGroup;
 			children = (
+				B4B84B802467E3C1009437E5 /* Supporting FIles */,
 				B4B84B67246706BF009437E5 /* AppDelegate.h */,
 				B4B84B68246706BF009437E5 /* AppDelegate.m */,
-				B4B84B6A246706BF009437E5 /* SceneDelegate.h */,
-				B4B84B6B246706BF009437E5 /* SceneDelegate.m */,
 				B4B84B6D246706C0009437E5 /* ViewController.h */,
 				B4B84B6E246706C0009437E5 /* ViewController.m */,
+				B4B84B79246706C1009437E5 /* main.m */,
+				B4B84B812467E448009437E5 /* PDMServiceLocator.h */,
+				B4B84B822467E448009437E5 /* PDMServiceLocator.m */,
+			);
+			path = Sensors;
+			sourceTree = "<group>";
+		};
+		B4B84B802467E3C1009437E5 /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				B4B84B6A246706BF009437E5 /* SceneDelegate.h */,
+				B4B84B6B246706BF009437E5 /* SceneDelegate.m */,
 				B4B84B70246706C0009437E5 /* Main.storyboard */,
 				B4B84B73246706C1009437E5 /* Assets.xcassets */,
 				B4B84B75246706C1009437E5 /* LaunchScreen.storyboard */,
 				B4B84B78246706C1009437E5 /* Info.plist */,
-				B4B84B79246706C1009437E5 /* main.m */,
 			);
-			path = Sensors;
+			path = "Supporting FIles";
+			sourceTree = "<group>";
+		};
+		B4B84B892467E890009437E5 /* SensorsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B4B84B962467E9B3009437E5 /* Sample Services */,
+				B4B84B8C2467E890009437E5 /* Info.plist */,
+				B4B84B932467E8B9009437E5 /* PDMServiceLocatorTests.m */,
+			);
+			path = SensorsTests;
+			sourceTree = "<group>";
+		};
+		B4B84B962467E9B3009437E5 /* Sample Services */ = {
+			isa = PBXGroup;
+			children = (
+				B4B84B972467EA71009437E5 /* PDMTestServiceOne.h */,
+				B4B84B982467EA71009437E5 /* PDMTestServiceOne.m */,
+				B4B84B9A2467EA7C009437E5 /* PDMTestServiceTwo.h */,
+				B4B84B9B2467EA7C009437E5 /* PDMTestServiceTwo.m */,
+				B4B84B9D2467EA97009437E5 /* PDMTestProtocolOne.h */,
+				B4B84B9E2467EBFA009437E5 /* PDMTestProtocolTwo.h */,
+			);
+			path = "Sample Services";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,17 +164,40 @@
 			productReference = B4B84B64246706BF009437E5 /* Sensors.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B4B84B872467E890009437E5 /* SensorsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4B84B8F2467E890009437E5 /* Build configuration list for PBXNativeTarget "SensorsTests" */;
+			buildPhases = (
+				B4B84B842467E890009437E5 /* Sources */,
+				B4B84B852467E890009437E5 /* Frameworks */,
+				B4B84B862467E890009437E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4B84B8E2467E890009437E5 /* PBXTargetDependency */,
+			);
+			name = SensorsTests;
+			productName = SensorsTests;
+			productReference = B4B84B882467E890009437E5 /* SensorsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B4B84B5C246706BF009437E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = PDM;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Alexey Sobolevsky";
 				TargetAttributes = {
 					B4B84B63246706BF009437E5 = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					B4B84B872467E890009437E5 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = B4B84B63246706BF009437E5;
 					};
 				};
 			};
@@ -124,6 +215,7 @@
 			projectRoot = "";
 			targets = (
 				B4B84B63246706BF009437E5 /* Sensors */,
+				B4B84B872467E890009437E5 /* SensorsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -139,6 +231,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4B84B862467E890009437E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -149,11 +248,31 @@
 				B4B84B6F246706C0009437E5 /* ViewController.m in Sources */,
 				B4B84B69246706BF009437E5 /* AppDelegate.m in Sources */,
 				B4B84B7A246706C1009437E5 /* main.m in Sources */,
+				B4B84B832467E448009437E5 /* PDMServiceLocator.m in Sources */,
 				B4B84B6C246706BF009437E5 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4B84B842467E890009437E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4B84B952467E8E4009437E5 /* PDMServiceLocator.m in Sources */,
+				B4B84B942467E8B9009437E5 /* PDMServiceLocatorTests.m in Sources */,
+				B4B84B9C2467EA7C009437E5 /* PDMTestServiceTwo.m in Sources */,
+				B4B84B992467EA71009437E5 /* PDMTestServiceOne.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4B84B8E2467E890009437E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4B84B63246706BF009437E5 /* Sensors */;
+			targetProxy = B4B84B8D2467E890009437E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B4B84B70246706C0009437E5 /* Main.storyboard */ = {
@@ -291,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E5FJ56WP5;
-				INFOPLIST_FILE = Sensors/Info.plist;
+				INFOPLIST_FILE = "Sensors/Supporting FIles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9E5FJ56WP5;
-				INFOPLIST_FILE = Sensors/Info.plist;
+				INFOPLIST_FILE = "Sensors/Supporting FIles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,6 +435,44 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.poissondumars.Sensors;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B4B84B902467E890009437E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9E5FJ56WP5;
+				INFOPLIST_FILE = SensorsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.poissondumars.SensorsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sensors.app/Sensors";
+			};
+			name = Debug;
+		};
+		B4B84B912467E890009437E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9E5FJ56WP5;
+				INFOPLIST_FILE = SensorsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.poissondumars.SensorsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sensors.app/Sensors";
 			};
 			name = Release;
 		};
@@ -336,6 +493,15 @@
 			buildConfigurations = (
 				B4B84B7E246706C1009437E5 /* Debug */,
 				B4B84B7F246706C1009437E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4B84B8F2467E890009437E5 /* Build configuration list for PBXNativeTarget "SensorsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4B84B902467E890009437E5 /* Debug */,
+				B4B84B912467E890009437E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
