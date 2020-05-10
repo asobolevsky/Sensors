@@ -13,7 +13,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 static NSString *const kPDMQueueName = @"com.poissondumars.PDMAccelerometerService";
-NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 /20.f;
+NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 / 20.f;
 
 @interface PDMAccelerometerService ()
 
@@ -51,10 +51,40 @@ NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 /20.f;
     PDMAccelerometerData *accelerometerData = [[PDMAccelerometerData alloc] init];
     @synchronized (self) {
         accelerometerData.count = self.updatesReceived;
+        accelerometerData.current = (PDMVector3) {
+            .x = self.xCalculator.current,
+            .y = self.yCalculator.current,
+            .z = self.zCalculator.current
+        };
+        accelerometerData.min = (PDMVector3) {
+            .x = self.xCalculator.min,
+            .y = self.yCalculator.min,
+            .z = self.zCalculator.min
+        };
         accelerometerData.max = (PDMVector3) {
             .x = self.xCalculator.max,
             .y = self.yCalculator.max,
             .z = self.zCalculator.max
+        };
+        accelerometerData.mean = (PDMVector3) {
+            .x = self.xCalculator.mean,
+            .y = self.yCalculator.mean,
+            .z = self.zCalculator.mean
+        };
+        accelerometerData.median = (PDMVector3) {
+            .x = self.xCalculator.median,
+            .y = self.yCalculator.median,
+            .z = self.zCalculator.median
+        };
+        accelerometerData.stdev = (PDMVector3) {
+            .x = self.xCalculator.stdev,
+            .y = self.yCalculator.stdev,
+            .z = self.zCalculator.stdev
+        };
+        accelerometerData.zeroCrossings = (PDMVector3) {
+            .x = self.xCalculator.zeroCrossings,
+            .y = self.yCalculator.zeroCrossings,
+            .z = self.zCalculator.zeroCrossings
         };
     }
     return accelerometerData;

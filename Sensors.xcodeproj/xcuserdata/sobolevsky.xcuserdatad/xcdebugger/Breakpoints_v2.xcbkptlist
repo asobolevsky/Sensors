@@ -3,4 +3,70 @@
    uuid = "B7936182-EF15-40E0-9D5D-FD8233C6C5C1"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA40C9F1-3AED-4806-A68B-51EB39658E19"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sensors/Services/Accelerometer/PDMRunningCalculator.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "-stdev"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA40C9F1-3AED-4806-A68B-51EB39658E19 - 1e1716a50eb602d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PDMRunningCalculator stdev]"
+                  moduleName = "Sensors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sobolevsky/Developer/ios/projects/Sensors/Sensors/Services/Accelerometer/PDMRunningCalculator.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "BA40C9F1-3AED-4806-A68B-51EB39658E19 - 1e1716a50eb602d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PDMRunningCalculator stdev]"
+                  moduleName = "Sensors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sobolevsky/Developer/ios/projects/Sensors/Sensors/Services/Accelerometer/PDMRunningCalculator.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "52FDB84A-9915-4754-9B8B-F43B6E09C622"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sensors/Services/Accelerometer/PDMRunningCalculator.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-stdev"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

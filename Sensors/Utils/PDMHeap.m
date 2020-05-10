@@ -13,7 +13,7 @@ const NSUInteger kPDMMaxHeapSize = 10000;
 
 @interface PDMHeap ()
 {
-    NSUInteger _heapSize;
+    NSInteger _heapSize;
 }
 
 @property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *heap;

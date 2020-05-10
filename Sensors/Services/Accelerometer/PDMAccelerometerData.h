@@ -12,8 +12,9 @@
 @interface PDMAccelerometerData : NSObject
 
 @property (nonatomic, assign) NSUInteger count;
-@property (nonatomic, assign) PDMVector3 max;
+@property (nonatomic, assign) PDMVector3 current;
 @property (nonatomic, assign) PDMVector3 min;
+@property (nonatomic, assign) PDMVector3 max;
 @property (nonatomic, assign) PDMVector3 mean;
 @property (nonatomic, assign) PDMVector3 median;
 @property (nonatomic, assign) PDMVector3 stdev;

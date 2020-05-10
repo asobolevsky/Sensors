@@ -10,6 +10,7 @@
 
 @interface PDMRunningCalculator : NSObject
 
+@property (nonatomic, assign, readonly) double current;
 @property (nonatomic, assign, readonly) double min;
 @property (nonatomic, assign, readonly) double max;
 @property (nonatomic, assign, readonly) double mean;
