@@ -10,11 +10,19 @@
 
 @class PDMAccelerometerData;
 
+@protocol PDMAccelerometerServiceObserver <NSObject, NSCopying>
+
+- (void)accelerometerDidUpdateWithData:(PDMAccelerometerData *)accelerometerData;
+
+@end
+
+
 @protocol PDMAccelerometerServiceProtocol <NSObject>
 
-@property (nonatomic, strong, readonly) PDMAccelerometerData *accelerometerData;
+- (void)startUpdates;
+- (void)stopUpdates;
 
-- (void)startAccelerometerUpdates;
-- (void)stopAccelerometerUpdates;
+- (void)registerObserver:(id<PDMAccelerometerServiceObserver>)observer timeinterval:(NSTimeInterval)timeinterval;
+- (void)removeObserver:(id<PDMAccelerometerServiceObserver>)observer;
 
 @end

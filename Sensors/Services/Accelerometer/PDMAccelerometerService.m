@@ -8,6 +8,7 @@
 
 #import "PDMAccelerometerService.h"
 #import "PDMAccelerometerData.h"
+#import "PDMObserverScheduler.h"
 #import "PDMRunningCalculator.h"
 #import "PDMUtils.h"
 #import <CoreMotion/CoreMotion.h>
@@ -15,13 +16,14 @@
 static NSString *const kPDMQueueName = @"com.poissondumars.PDMAccelerometerService";
 NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 / 20.f;
 
-@interface PDMAccelerometerService ()
+@interface PDMAccelerometerService () <PDMObserverSchedulerDelegate>
 
 @property (nonatomic, strong, readonly) NSOperationQueue *queue;
 @property (nonatomic, strong, readonly) CMMotionManager *motionManager;
 @property (nonatomic, strong, readonly) PDMRunningCalculator *xCalculator;
 @property (nonatomic, strong, readonly) PDMRunningCalculator *yCalculator;
 @property (nonatomic, strong, readonly) PDMRunningCalculator *zCalculator;
+@property (nonatomic, strong, readonly) PDMObserverScheduler *scheduler;
 @property (nonatomic, assign) NSUInteger updatesReceived;
 
 @end
@@ -41,6 +43,8 @@ NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 / 20.f;
         _xCalculator = [[PDMRunningCalculator alloc] init];
         _yCalculator = [[PDMRunningCalculator alloc] init];
         _zCalculator = [[PDMRunningCalculator alloc] init];
+        _scheduler = [[PDMObserverScheduler alloc] init];
+        _scheduler.delegate = self;
         _updatesReceived = 0;
     }
     return self;
@@ -48,7 +52,7 @@ NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 / 20.f;
 
 - (PDMAccelerometerData *)accelerometerData
 {
-    PDMAccelerometerData *accelerometerData = [[PDMAccelerometerData alloc] init];
+    var accelerometerData = [[PDMAccelerometerData alloc] init];
     @synchronized (self) {
         accelerometerData.count = self.updatesReceived;
         accelerometerData.current = (PDMVector3) {
@@ -90,7 +94,7 @@ NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 / 20.f;
     return accelerometerData;
 }
 
-- (void)startAccelerometerUpdates
+- (void)startUpdates
 {
     if (self.motionManager.isAccelerometerAvailable && self.motionManager.accelerometerActive == NO)
         [self.motionManager startAccelerometerUpdatesToQueue:self.queue
@@ -101,7 +105,7 @@ NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 / 20.f;
         }];
 }
 
-- (void)stopAccelerometerUpdates
+- (void)stopUpdates
 {
     [self.motionManager stopAccelerometerUpdates];
 }
@@ -112,6 +116,27 @@ NSTimeInterval const kPDMAccelerometerUpdateInterval = 1 / 20.f;
     [self.xCalculator append:accelerometerData.acceleration.x];
     [self.yCalculator append:accelerometerData.acceleration.y];
     [self.zCalculator append:accelerometerData.acceleration.z];
+}
+
+- (void)registerObserver:(id<PDMAccelerometerServiceObserver>)observer timeinterval:(NSTimeInterval)timeinterval
+{
+    [self.scheduler registerObserver:observer timeinterval:timeinterval];
+}
+
+- (void)removeObserver:(id<PDMAccelerometerServiceObserver>)observer
+{
+    [self.scheduler removeObserver:observer];
+}
+
+
+#pragma mark - PDMObserverSchedulerDelegate
+
+- (void)updateObserverWithTimer:(NSTimer *)timer
+{
+    if (timer.isValid && [timer.userInfo conformsToProtocol:@protocol(PDMAccelerometerServiceObserver)]) {
+        var observer = (id<PDMAccelerometerServiceObserver>)timer.userInfo;
+        [observer accelerometerDidUpdateWithData:self.accelerometerData];
+    }
 }
 
 @end

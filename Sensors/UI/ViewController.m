@@ -11,10 +11,10 @@
 #import "PDMServiceLocator.h"
 #import "PDMAccelerometerServiceProtocol.h"
 #import "PDMAccelerometerData.h"
+#import "PDMGPSTrackerServiceProtocol.h"
 #import "PDMUtils.h"
 
 NSTimeInterval const kPDMDataUpdateInterval = 1 / 8.f;
-
 
 typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
     PDMAccelerometerPropertyCurrent = 0,
@@ -28,14 +28,14 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
 };
 
 
-@interface ViewController () <UITableViewDataSource>
+@interface ViewController () <UITableViewDataSource, PDMAccelerometerServiceObserver>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSDictionary<NSNumber *, NSString *> *properties;
 @property (nonatomic, strong) id<PDMAccelerometerServiceProtocol> accelerometerService;
 @property (nonatomic, strong) PDMAccelerometerData *accelerometerData;
-@property (nonatomic, strong) NSTimer *dataUpdateTimer;
+@property (nonatomic, strong) id<PDMGPSTrackerServiceProtocol> gpsTrackerService;
 
 
 @end
@@ -56,33 +56,19 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
     };
     self.accelerometerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMAccelerometerServiceProtocol)];
     self.accelerometerData = [[PDMAccelerometerData alloc] init];
-
-    self.dataUpdateTimer = [NSTimer timerWithTimeInterval:kPDMDataUpdateInterval
-                                                   target:self
-                                                 selector:@selector(updateData)
-                                                 userInfo:nil
-                                                  repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.dataUpdateTimer forMode:NSDefaultRunLoopMode];
+    self.gpsTrackerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMGPSTrackerServiceProtocol)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.dataUpdateTimer fire];
+    [self.accelerometerService registerObserver:self timeinterval:kPDMDataUpdateInterval];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-
-    [self.dataUpdateTimer invalidate];
-    self.dataUpdateTimer = nil;
-}
-
-- (void)updateData
-{
-    self.accelerometerData = self.accelerometerService.accelerometerData;
-    [self.tableView reloadData];
+    [self.accelerometerService removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource
@@ -90,6 +76,16 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0: return @"Accelerometer";
+        case 1: return @"GPS";
+
+        default: return nil;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -133,6 +129,16 @@ typedef NS_ENUM(NSInteger, PDMAccelerometerProperty) {
     cell.xValueLabel.text = [NSString stringWithFormat:@"x: %.6f", vector3.x];
     cell.yValueLabel.text = [NSString stringWithFormat:@"y: %.6f", vector3.y];
     cell.zValueLabel.text = [NSString stringWithFormat:@"z: %.6f", vector3.z];
+}
+
+#pragma mark - PDMAccelerometerServiceObserver
+
+- (void)accelerometerDidUpdateWithData:(PDMAccelerometerData *)accelerometerData
+{
+    self.accelerometerData = accelerometerData;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 @end

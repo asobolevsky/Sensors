@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "PDMServiceLocator.h"
 #import "PDMAccelerometerService.h"
-#import "PDMAccelerometerServiceProtocol.h"
+#import "PDMGPSTrackerService.h"
 
 @interface AppDelegate ()
 
@@ -48,30 +48,28 @@
 {
     [PDMServiceLocator registerService:[[PDMAccelerometerService alloc] init]
                            forProtocol:@protocol(PDMAccelerometerServiceProtocol)];
+    [PDMServiceLocator registerService:[[PDMGPSTrackerService alloc] init]
+                           forProtocol:@protocol(PDMGPSTrackerServiceProtocol)];
 }
 
 - (void)startServices
 {
-    [self startAccelerometer];
+    id<PDMAccelerometerServiceProtocol> accelerometerService;
+    accelerometerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMAccelerometerServiceProtocol)];
+    [accelerometerService startUpdates];
+
+    id<PDMGPSTrackerServiceProtocol> gpsTrackerService;
+    gpsTrackerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMGPSTrackerServiceProtocol)];
 }
 
 - (void)stopServices
 {
-    [self stopAccelerometer];
-}
-
-- (void)startAccelerometer
-{
     id<PDMAccelerometerServiceProtocol> accelerometerService;
     accelerometerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMAccelerometerServiceProtocol)];
-    [accelerometerService startAccelerometerUpdates];
-}
+    [accelerometerService stopUpdates];
 
-- (void)stopAccelerometer
-{
-    id<PDMAccelerometerServiceProtocol> accelerometerService;
-    accelerometerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMAccelerometerServiceProtocol)];
-    [accelerometerService stopAccelerometerUpdates];
+    id<PDMGPSTrackerServiceProtocol> gpsTrackerService;
+    gpsTrackerService = [PDMServiceLocator serviceForProtocol:@protocol(PDMGPSTrackerServiceProtocol)];
 }
 
 
