@@ -84,6 +84,10 @@ NSTimeInterval const kPDMWalkDurationInSeconds = 60 * 3;
                 self.totalDistance -= delta;
                 [indicesToDelete addIndex:i];
             }
+            // As locations are from earlyest to latest, it's safe to break
+            else {
+                break;
+            }
         }
         if (indicesToDelete.count > 0) {
             [self.lastLocations removeObjectsAtIndexes:indicesToDelete];
