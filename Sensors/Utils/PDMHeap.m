@@ -9,7 +9,7 @@
 #import "PDMHeap.h"
 #import "PDMUtils.h"
 
-const NSUInteger kPDMMaxHeapSize = 10000;
+const NSInteger kPDMMaxHeapSize = 10000;
 
 @interface PDMHeap ()
 {
@@ -46,7 +46,7 @@ const NSUInteger kPDMMaxHeapSize = 10000;
 
 -(double)top
 {
-    double max = DBL_MAX;
+    double max = -1;
     if(_heapSize >= 0) {
         max = self.heap[0].doubleValue;
     }

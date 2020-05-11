@@ -12,8 +12,12 @@
 int main(int argc, char * argv[]) {
     NSString * appDelegateClassName;
     @autoreleasepool {
+        Class appDelegateClass = NSClassFromString(@"PDMTestAppDelegate");
+        if (appDelegateClass == nil) {
+            appDelegateClass = [AppDelegate class];
+        }
         // Setup code that might create autoreleased objects goes here.
-        appDelegateClassName = NSStringFromClass([AppDelegate class]);
+        appDelegateClassName = NSStringFromClass(appDelegateClass);
     }
     return UIApplicationMain(argc, argv, nil, appDelegateClassName);
 }
